@@ -1,4 +1,4 @@
-console.log("train task ishga tushdi")
+console.log("train taskni ishga tushiramiz")
 
 //C-task
 

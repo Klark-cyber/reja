@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 //4 Routing code
 
 app.get("/hello", function(req,res){
-    res.end(`<h1>Hello world by BekzodAli<h1>`);  //res.end(`<h1 style="background: red"> <a href="http://localhost:3000/gift">Hello world by BekzodAli</a><h1>`);
+    res.end(`<h1>Hello world by Bekzodali<h1>`);  //res.end(`<h1 style="background: red"> <a href="http://localhost:3000/gift">Hello world by BekzodAli</a><h1>`);
 });
 
 app.get("/gift", function(req,res){

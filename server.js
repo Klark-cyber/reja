@@ -7,7 +7,7 @@ const http = require("http");
 //1 Kirish kode.expressga kirib kelayotgan malumotga bogliq kodlar
 app.use(express.static("public")) //xar qanday browserdan kirib kelayotgan sorovlar uchun public folderi ochiq. Yani public papkasini ochiq frontend papka qildik.Keyinchalik html css bezaklarini shu folder ichiga yozamiz
 app.use(express.json()) //json korinishida kirib klayotgan maumotni object holatiga ozgartirib beradi.
-app.use(express.urlencoded({extended: true})) //html <form> dan keladigan malumotlarni oqish
+app.use(express.urlencoded({extended: true})) //html <form> dan keladigan malumotlarni oqish.Yani server tushunadigan code korinishiga ogirish
 
 //2 Session code
 
@@ -19,13 +19,13 @@ app.set("view engine", "ejs");
 
 
 //4 Routing code
+app.post("/create-item",(req,res) => {
+    console.log(req.body); //kelgan malumotning bodysini koncol qildik. natija: { item: 'this is great!' } shaklidagi name=item malumot keldi
+    res.json({test: "success"}); //create itemdan browserga json formatdagi javobni qaytarib yubordik
+})
 
-app.get("/hello", function(req,res){
-    res.end(`<h1>Hello world by Bekzodali<h1>`);  //res.end(`<h1 style="background: red"> <a href="http://localhost:3000/gift">Hello world by BekzodAli</a><h1>`);
-});
-
-app.get("/gift", function(req,res){
-    res.end(`<h1>Siz sovgalar bolimidasiz<h1>`); //res.end(`<h1 style="background: green"> <a href="http://localhost:3000/hello">Siz sovgalar bolimidasiz</a><h1>`);
+app.get("/", function(req,res){
+    res.render("harid");
 });
 
 const server = http.createServer(app); //expressni http serverga boglash

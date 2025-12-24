@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>REJA</title>
+
+  <!-- BOOTSTRAP 4.2 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css". 
+    rel="stylesheet"> <!--bootstrapni loyihaga uladik endi stylellarni osonlikcha yaratamiz-->
+
+</head>
+<body style="background-color: #b8bbd1;">
+
+  <div class="container">
+    <h1 class="display-4 text-center py-1">REJA VA MAQSADLAR</h1> <!--display-4 bu matn hajmi, text-center matnni ortaga joylashtirdi, py-1 margin top/bottom-->
+
+  <div class="jumbotron p-3 shadow-sm">
+  <form id="create-form" action="/create-item" method="POST"> <!--action=create-item manziliga kiritilgan malumotlar yuboriladi. Post yani server form malumotlarni qabul qiladi-->
+    <div class="d-flex align-items-center">
+      <input
+        id="create-field"
+        name="item" 
+        autofocus
+        autocomplete="off"
+        class="form-control mr-3"
+        type="text"
+        style="flex: 1"
+      />
+      <button class="btn btn-primary" style="border-radius: 20px">
+        Yangi Harid Qo‘shish
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

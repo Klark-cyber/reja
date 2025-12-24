@@ -9,7 +9,7 @@
     "dev":"nodemon server.js",
     "train":"nodemon train.js"
   },
-  "author": "Jamshi (KLARK)",
+  "author": "Jamshid (KLARK)",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",

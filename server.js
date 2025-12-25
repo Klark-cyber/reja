@@ -2,6 +2,16 @@ console.log("Web serverni boshlash")
 const express = require("express"); //express paketini loyihaga yukladik
 const app = express(); //expressni ishga tushirib server obyectini yaratdik.server nomi app
 const http = require("http");
+const fs = require("fs");
+
+let user;
+fs.readFile("database/user.json","utf8", (err,data) => {
+    if(err){
+        console.log("ERROR:",err);
+    }else {
+        user = JSON.parse(data) //parse jsondan obyect korinishiga otkazib beradi
+    }
+});
 
 
 //1 Kirish kode.expressga kirib kelayotgan malumotga bogliq kodlar
@@ -24,8 +34,12 @@ app.post("/create-item",(req,res) => {
     res.json({test: "success"}); //create itemdan browserga json formatdagi javobni qaytarib yubordik
 })
 
+app.get("/author",(req,res) => {
+    res.render("author", {user: user});
+})
+
 app.get("/", function(req,res){
-    res.render("harid");
+    res.render("harid"); //render malumotlarni htmlga aylantirib browserga korsatish
 });
 
 const server = http.createServer(app); //expressni http serverga boglash

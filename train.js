@@ -1,37 +1,37 @@
 //================================callback function with setInterval()=================================================
-console.log("Jack Ma maslahatlari");
-const list = [
-    "Yaxshi talaba boling", //0-20
-    "togri boshliq tanlang va koproq xato qiling", //20-30
-    "ozingiz uchun ishlashni boshlang", //30-40
-    "siz kuchli bolgan narsalaringizni qiling", //40-50
-    "yoshlarga invistitsiya qiling", //50-60
-    "endi dam oling,foydasi yoq" //60
-    ];
+// console.log("Jack Ma maslahatlari");
+// const list = [
+//     "Yaxshi talaba boling", //0-20
+//     "togri boshliq tanlang va koproq xato qiling", //20-30
+//     "ozingiz uchun ishlashni boshlang", //30-40
+//     "siz kuchli bolgan narsalaringizni qiling", //40-50
+//     "yoshlarga invistitsiya qiling", //50-60
+//     "endi dam oling,foydasi yoq" //60
+//     ];
 
-function maslahatBering(a,callback){
-    if(typeof a !=="number") callback("insert a number",null); //cahqiriladigan callback funksiyamizda 2 ta parametr bolishi kerak.
-    else if (a <= 20) callback(null, list[0]); //if shartidan keyingi qator 1 qatordan iborat shu sababli {} ni ishlatmasak ham boladi
-    else if (a > 20 && a <=30) callback(null, list[1]);
-    else if (a > 30 && a <=40) callback(null, list[2]);
-    else if (a > 40 && a <=50) callback(null, list[3]);
-    else if (a > 50 && a <=60) callback(null, list[4]);
-    else { //60 dan katta yosh uchun chiqadigan natija 64/72 qator kodlari ishga tushgandan song 3 bolib 5 soniyadan keyin ishga tushadi
-        setInterval(function(){ //SetInterval natijasida return bolayotgan natija har 5 sekundda amalga oshyapti.Natijada terminalda list[5] dan qaytgan natijahar 1 sekunnda paydo boladi
-            callback(null, list[5]);
-        }, 1000);
-    }
-}
+// function maslahatBering(a,callback){
+//     if(typeof a !=="number") callback("insert a number",null); //cahqiriladigan callback funksiyamizda 2 ta parametr bolishi kerak.
+//     else if (a <= 20) callback(null, list[0]); //if shartidan keyingi qator 1 qatordan iborat shu sababli {} ni ishlatmasak ham boladi
+//     else if (a > 20 && a <=30) callback(null, list[1]);
+//     else if (a > 30 && a <=40) callback(null, list[2]);
+//     else if (a > 40 && a <=50) callback(null, list[3]);
+//     else if (a > 50 && a <=60) callback(null, list[4]);
+//     else { //60 dan katta yosh uchun chiqadigan natija 64/72 qator kodlari ishga tushgandan song 3 bolib 5 soniyadan keyin ishga tushadi
+//         setInterval(function(){ //SetInterval natijasida return bolayotgan natija har 5 sekundda amalga oshyapti.Natijada terminalda list[5] dan qaytgan natijahar 1 sekunnda paydo boladi
+//             callback(null, list[5]);
+//         }, 1000);
+//     }
+// }
 
-console.log("passed here 0");
+// console.log("passed here 0");
 
-maslahatBering(65, (err, data) => { //err,data => yuqorida yasalgan callback funksiyaning argumentlari
-    if(err) console.log("ERROR:", err); //agar err==tru bolsa error xabari chiqadi aks holda javob: chiqadi
-    else { //Bu qatorni qisqa qilib else console.log("javob:", data); korinishida yozish ham mumkin
-        console.log("javob:", data);
-    }
-});
-console.log("passed here 1");
+// maslahatBering(65, (err, data) => { //err,data => yuqorida yasalgan callback funksiyaning argumentlari
+//     if(err) console.log("ERROR:", err); //agar err==tru bolsa error xabari chiqadi aks holda javob: chiqadi
+//     else { //Bu qatorni qisqa qilib else console.log("javob:", data); korinishida yozish ham mumkin
+//         console.log("javob:", data);
+//     }
+// });
+// console.log("passed here 1");
 
 
 //====================================================Async function===========================================
@@ -67,7 +67,7 @@ console.log("passed here 1");
 // console.log("passed here 1");
 
 
-// asyn/await
+// call via asyn/await
 // async function run(){ //yangi async funksiya hosil qildik
 //    let javob = await maslahatBering(20)  //yangi ozgaruvchiga await yordamida maslahatBer funksiya natijasini yukladik.Sabab await maslahatBer funksiyadan natija kelguncha keyingi qator kodlariga otib ketishni oldini oladi.Bu orqali async fu-ya natijasiga bogliq bolgan sync fu-ya natijasida xatlik yuzaga kelishini oldini olamiz
 //    console.log(javob)

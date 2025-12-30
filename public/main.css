@@ -20,7 +20,8 @@
 .main_frame .left_frame {
     position: relative;
     width: 305px;
-    height: 1315px;
+    height: 1300px;
+    bottom: 6px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -39,7 +40,8 @@
 .main_frame .right_frame {
     position: relative;
     width: 108px;
-    height: 1315px;
+    height: 1300px;
+    bottom: 6px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -90,6 +92,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    opacity: 0.5;
     width: 147.84px;
     height: 20.65px;   
     margin-bottom: 20px;
@@ -192,6 +195,16 @@
     justify-content: flex-end;
    
     }
+    .left-text{
+    font-family: sans-serif; 
+    font-style: normal;
+    font-size: 18px;
+    margin-left: 3px;
+    display: flex;
+    color: hsl(120, 42%, 71%);
+    justify-content: flex-end;
+   
+    }
 
 
 
@@ -263,6 +276,7 @@
     font-style: normal;
     display: flex;
     margin-left: 0px;
+    opacity: 0.5;
     /* justify-content: start; */
     font-size: 18px;
     margin: 5px;
@@ -271,6 +285,7 @@
     font-family: sans-serif; 
     font-style: normal;
     display: flex;
+    opacity: 0.5;
     margin-left: 0px;
     /* justify-content: start; */
     font-size: 18px;
@@ -379,6 +394,7 @@ text-transform: capitalize;
 .left_5-text{
 display: flex;
 width: 100%;
+opacity: 0.5;
 font-family: sans-serif; 
 font-style: normal;
 font-size: 18px;

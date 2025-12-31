@@ -1,3 +1,29 @@
+//=================================Task B========================================
+
+const countDigits = (a) => {
+    const b = a.split()
+    let count = 0
+    for(let i = 0; i<b.length; i++){
+        if(typeof i === "number"){
+            count ++
+        }
+    }
+    console.log(count)
+}  
+countDigits("ad2a54y79wet0stgb9")
+console.log("aaa")
+
+
+
+
+
+
+
+
+
+
+
+
 //================================callback function with setInterval()=================================================
 // console.log("Jack Ma maslahatlari");
 // const list = [

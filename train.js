@@ -1,17 +1,16 @@
 //=================================Task B========================================
 
 const countDigits = (a) => {
-    const b = a.split()
+    //const b = a.split("")
     let count = 0
-    for(let i = 0; i<b.length; i++){
-        if(typeof i === "number"){
+    for(let i = 0; i<a.length; i++){
+        if( a[i] >="0" && a[i] <= "9"){
             count ++
         }
     }
     console.log(count)
 }  
 countDigits("ad2a54y79wet0stgb9")
-console.log("aaa")
 
 
 

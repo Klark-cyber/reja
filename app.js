@@ -33,8 +33,18 @@ app.set("view engine", "ejs"); //res.render qilib kerakli fileni yozganimizda .e
 
 //4 Routing(yonalishlar) code.Foydalanuvchi brouzerda turli manzillarga kirganda nima sodir bolishi.
 app.post("/create-item",(req,res) => {
+    console.log("user entered /create-item")
     console.log(req.body); //kelgan malumotning bodysini koncol qildik. natija: { item: 'this is great!' } shaklidagi name=item malumot keldi
-    res.json({test: "success"}); //create itemdan browserga json formatdagi javobni qaytarib yubordik
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({reja:new_reja},(err,data)=>{
+      if(err){
+            console.log(err)
+            res.end("something went wrong");
+        }else{
+            res.end("successfully added") 
+        }
+    })
+    //res.json("success"); //create itemdan browserga json formatdagi javobni qaytarib yubordik
 })
 
 app.get("/author",(req,res) => { //Agar user shu manzilga kirsa server author.ejs faylni olib uning ichiga 12 qatordan olingan user malumotlarini joylashtirib brouserga yuboradi
@@ -42,7 +52,16 @@ app.get("/author",(req,res) => { //Agar user shu manzilga kirsa server author.ej
 })
 
 app.get("/", function(req,res){
-    res.render("reja"); //render malumotlarni htmlga aylantirib browserga korsatish
+    console.log("user entered /")
+    db.collection("plans").find().toArray((err, data)=>{
+        if(err){
+            console.log(err)
+            res.end("something went wrong");
+        }else{
+            console.log(data)
+            res.render("reja", {items: data}); //render malumotlarni htmlga aylantirib browserga korsatish
+        }
+    })
 });
 
 module.exports = app;

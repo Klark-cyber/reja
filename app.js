@@ -37,12 +37,15 @@ app.post("/create-item",(req,res) => {
     console.log(req.body); //kelgan malumotning bodysini koncol qildik. natija: { item: 'this is great!' } shaklidagi name=item malumot keldi
     const new_reja = req.body.reja;
     db.collection("plans").insertOne({reja:new_reja},(err,data)=>{
-      if(err){
-            console.log(err)
-            res.end("something went wrong");
-        }else{
-            res.end("successfully added") 
-        }
+        console.log(data.ops)
+        res.json(data.ops[0]);
+
+    //   if(err){
+    //         console.log(err)
+    //         res.end("something went wrong");
+    //     }else{
+    //         res.end("successfully added") 
+    //     }
     })
     //res.json("success"); //create itemdan browserga json formatdagi javobni qaytarib yubordik
 })

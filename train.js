@@ -1,27 +1,70 @@
+//================================Task C=========================================
+function getTime(){
+        const now = new Date();
+        return now.getHours() + ":" +String(now.getMinutes()).padStart(2,"0");
+    }
+
+class Shop{ //non,lagmon,cola
+    constructor(one,two,thre){
+        this.one = one;
+        this.two = two;
+        this.thre = thre;
+    }
+    
+    sotish(product,value){
+        if(product.toLowerCase() === "non" )
+            if(value<=this.one){
+            this.one-=value;
+        } else {
+            console.log(`Kechirasiz xozirda faqat ${this.one} ta non mavjud`)
+        }else if(product.toLowerCase() === "lagmon" )
+            if(value<=this.two){
+            this.two-=value;
+        } else {
+            console.log(`Kechirasiz xozirda faqat ${this.two} ta lagmon mavjud`)
+        }else if(product.toLowerCase() === "cola" )
+            if(value<=this.thre){
+            this.thre-=value;
+        } else {
+            console.log(`Kechirasiz xozirda faqat ${this.thre} ta cola mavjud`)
+        }
+    }    
+    qabul(mahsulot,soni){
+        if(mahsulot.toLowerCase() === "non") return this.one+=soni;
+        if(mahsulot.toLowerCase() === "lagmon") return this.two+=soni;
+        if(mahsulot.toLowerCase() === "cola") return this.thre+=soni;
+    };
+    qoldiq(){
+        console.log(`Xozir soat ${getTime()}da, ${this.one}ta non, ${this.two}ta lag'mon, ${this.thre}ta cola mavjud`)
+    };
+}
+
+
+const Shopping = new Shop(6,7,8)
+Shopping.qoldiq()
+Shopping.qabul("non",2)
+Shopping.sotish("non",3)
+Shopping.qabul("cola",4)
+Shopping.qoldiq()
+
+
+
+
+
+
 //=================================Task B========================================
 
-const countDigits = (a) => {
-    //const b = a.split("")
-    let count = 0
-    for(let i = 0; i<a.length; i++){
-        if( a[i] >="0" && a[i] <= "9"){
-            count ++
-        }
-    }
-    console.log(count)
-}  
-countDigits("ad2a54y79wet0stgb9")
-
-
-
-
-
-
-
-
-
-
-
+// const countDigits = (a) => {
+//     //const b = a.split("")
+//     let count = 0
+//     for(let i = 0; i<a.length; i++){
+//         if( a[i] >="0" && a[i] <= "9"){
+//             count ++
+//         }
+//     }
+//     console.log(count)
+// }  
+// countDigits("ad2a54y79wet0stgb9")
 
 //================================callback function with setInterval()=================================================
 // console.log("Jack Ma maslahatlari");

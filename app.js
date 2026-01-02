@@ -6,7 +6,7 @@ const fs = require("fs"); //Kerak paytda json filellar bilan ishlash uchun chaqi
 
 //MongoDBni chaqiramiz
 const db = require("./server").db()
-
+const mongodb = require("mongodb")
 let user;
 fs.readFile("database/user.json","utf8", (err,data) => {
     if(err){
@@ -49,6 +49,15 @@ app.post("/create-item",(req,res) => {
     })
     //res.json("success"); //create itemdan browserga json formatdagi javobni qaytarib yubordik
 })
+
+app.post("/deleate-item",(req,res) => {
+    const id = req.body.id;
+    //console.log(id)
+    //res.end("done")
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function(err,data){
+        res.json({state: "succes"})
+    })
+});
 
 app.get("/author",(req,res) => { //Agar user shu manzilga kirsa server author.ejs faylni olib uning ichiga 12 qatordan olingan user malumotlarini joylashtirib brouserga yuboradi
     res.render("author", {user: user});//{user: user} author.ejs file ichida <%=user.name%> kabi kodlar yozib foydalanuvchi malumotlarini dinamik kirita olamiz

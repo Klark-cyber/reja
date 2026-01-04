@@ -1,59 +1,67 @@
+
+//=================================Task D======================================
+
+//Berilgan:TASK D : Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+function checkContent(letter1,letter2){
+    const text1 = letter1.toLowerCase().split("").sort().join("")//2.massivga aylantirdik,3.sort orqali alifbo tartibida tartibladik,4.join() orqaliyana stringga aylantirdik
+    const text2 = letter2.toLowerCase().split("").sort().join("")
+    return text1==text2
+}
+console.log(checkContent("Jamshid","dishmaj"))
+
+
 //================================Task C=========================================
 
 //Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
 //MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
 
-function getTime(){
-        const now = new Date();
-        return now.getHours() + ":" +String(now.getMinutes()).padStart(2,"0");
-    }
+// function getTime(){
+//         const now = new Date();
+//         return now.getHours() + ":" +String(now.getMinutes()).padStart(2,"0");
+//     }
 
-class Shop{ //non,lagmon,cola
-    constructor(one,two,thre){
-        this.one = one;
-        this.two = two;
-        this.thre = thre;
-    }
+// class Shop{ //non,lagmon,cola
+//     constructor(one,two,thre){
+//         this.one = one;
+//         this.two = two;
+//         this.thre = thre;
+//     }
     
-    sotish(product,value){
-        if(product.toLowerCase() === "non" )
-            if(value<=this.one){
-            this.one-=value;
-        } else {
-            console.log(`Kechirasiz xozirda faqat ${this.one} ta non mavjud`)
-        }else if(product.toLowerCase() === "lagmon" )
-            if(value<=this.two){
-            this.two-=value;
-        } else {
-            console.log(`Kechirasiz xozirda faqat ${this.two} ta lagmon mavjud`)
-        }else if(product.toLowerCase() === "cola" )
-            if(value<=this.thre){
-            this.thre-=value;
-        } else {
-            console.log(`Kechirasiz xozirda faqat ${this.thre} ta cola mavjud`)
-        }
-    }    
-    qabul(mahsulot,soni){
-        if(mahsulot.toLowerCase() === "non") return this.one+=soni;
-        if(mahsulot.toLowerCase() === "lagmon") return this.two+=soni;
-        if(mahsulot.toLowerCase() === "cola") return this.thre+=soni;
-    };
-    qoldiq(){
-        console.log(`Xozir soat ${getTime()}da, ${this.one}ta non, ${this.two}ta lag'mon, ${this.thre}ta cola mavjud`)
-    };
-}
+//     sotish(product,value){
+//         if(product.toLowerCase() === "non" )
+//             if(value<=this.one){
+//             this.one-=value;
+//         } else {
+//             console.log(`Kechirasiz xozirda faqat ${this.one} ta non mavjud`)
+//         }else if(product.toLowerCase() === "lagmon" )
+//             if(value<=this.two){
+//             this.two-=value;
+//         } else {
+//             console.log(`Kechirasiz xozirda faqat ${this.two} ta lagmon mavjud`)
+//         }else if(product.toLowerCase() === "cola" )
+//             if(value<=this.thre){
+//             this.thre-=value;
+//         } else {
+//             console.log(`Kechirasiz xozirda faqat ${this.thre} ta cola mavjud`)
+//         }
+//     }    
+//     qabul(mahsulot,soni){
+//         if(mahsulot.toLowerCase() === "non") return this.one+=soni;
+//         if(mahsulot.toLowerCase() === "lagmon") return this.two+=soni;
+//         if(mahsulot.toLowerCase() === "cola") return this.thre+=soni;
+//     };
+//     qoldiq(){
+//         console.log(`Xozir soat ${getTime()}da, ${this.one}ta non, ${this.two}ta lag'mon, ${this.thre}ta cola mavjud`)
+//     };
+// }
 
 
-const Shopping = new Shop(6,7,8)
-Shopping.qoldiq()
-Shopping.qabul("non",2)
-Shopping.sotish("non",3)
-Shopping.qabul("cola",4)
-Shopping.qoldiq()
-
-
-
-
+// const Shopping = new Shop(6,7,8)
+// Shopping.qoldiq()
+// Shopping.qabul("non",2)
+// Shopping.sotish("non",3)
+// Shopping.qabul("cola",4)
+// Shopping.qoldiq()
 
 
 //=================================Task B========================================

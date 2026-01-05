@@ -19,6 +19,7 @@ let createField = document.getElementById("create-field") //createfield bu form 
 document.getElementById("create-form").addEventListener("submit", function(e){//Malumot kiritilib enter bolganda ishga tushadigan kod.Htm formning idsi orqali uni qolga kiritdik
     e.preventDefault(); //Traditional usulda yani malumot kiritilib inter bosilganda create-item urliga otib ketishini oldi olindi.HTMLdagi actionda korsatilgan manzil ishga tushib ketishi oldi olindi.Agar buni yozmasak kiritilgan malumot browserda 2 marta paydo boladi sababi.Biri traditional usulda post boladi ikkinchisi axios orqali modern uslubda post bolib mongodbga joylashadi va app.get bolganda ikkalasi ham korinadi
 
+
     axios //axios external package bolib uni htmlga yani reja.ejs ichiga yukladik
     .post("/create-item", {reja: createField.value})//axios obyctining .post() metodi orqali foydalanuvchi yuborgan malumotni serverdagi qaysi urlga qaysi nom orqali yuborilishi kerakligini belgildik.reja bu form tegida formga berilgan name:reja ning qiymati.Createfield.value bu user tomonidan kiritilgan malumotning qiymati.Yani u kiritgan matn
     .then((response) =>{//.post() orqali serverga yuborilgan malumot muvafaqqiyatli bajarilgan bolsa server bizga kerakli malumotni yuboradi.Ayni shu malumot response va unga tegishli data obyecti hisoblanadi yani response.data.Qabul qilingan data birdaniga browserga qoshilyapti qanday qoshishni esa itemtemplate belgilab beradi
@@ -29,6 +30,17 @@ document.getElementById("create-form").addEventListener("submit", function(e){//
         createField.value = ""; //Bu qator orqali user kiritgan malumot '' ga yani bosh qiymatga tenglanyapti sababi avval kiritilgan malumot input ichida qolmasligi kerak
         createField.focus();//probelni input katagiga togirladik
 })
+
+    axios
+    .post("/create-item", {reja: createField.value})
+    .then((response) =>{
+        document
+        .getElementById("item-list")
+        .insertAdjacentHTML("beforebegin", itemTemplate(response.data))
+        createField.value = "";
+        createField.focus();
+    })
+
     .catch((err) => {
         console.log("Iltimos qayta urinib koring")
     });
@@ -55,6 +67,23 @@ document.addEventListener("click",function(e){ //Browserdagi tugma click bolsa a
 
     //edit operatsiyalari
     if(e.target.classList.contains("edit-me")){
-        alert("siz edit tugmasini bosdingiz")
+        let userInput = prompt("Yangi o'zgarishni kiriting", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML ) //=> getElementsByClassName("item-text")[0]
+        if(userInput){
+        axios.post("/edit-item",{id: e.target.getAttribute("data-id"), new_input: userInput})
+        .then((response) => {
+            console.log(response.data)
+            e.target.parentElement.parentElement.querySelector(".item-text").innerHTML=userInput;
+        })
+        .catch((err) => {
+            console.log("Iltimos qaytadan urinib koring")
+        });
+        }
     }
-})
+});
+document.getElementById("clean-all").addEventListener("click", function(){ //Hamma rejalarni ochirish tugmasini ishga tushiramiz.Bunda mongodbdagi barcha malumot ochib ketadi
+    //e.preventDefault(); bu kod shart emas sababi bu btn form tegidan tashqarida va u ishga tushsa yangi url ishga tushmaydi
+    axios.post("/deleate-all", { deleate_all: true}).then((response) => {
+        alert(response.data.state);
+        document.location.reload();
+    });
+});

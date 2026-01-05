@@ -62,9 +62,36 @@ app.post("/deleate-item",(req,res) => { //frontend yoki browser ochirish tugmasi
     })
 });
 
+
 // app.get("/author",(req,res) => { //Agar user shu manzilga kirsa server author.ejs faylni olib uning ichiga 12 qatordan olingan user malumotlarini joylashtirib brouserga yuboradi
 //     res.render("author", {user: user});//{user: user} author.ejs file ichida <%=user.name%> kabi kodlar yozib foydalanuvchi malumotlarini dinamik kirita olamiz
 // })
+
+app.post("/edit-item",(req,res) => {
+    const data = req.body;
+
+    //console.log(id)
+    //res.end("done")
+    db.collection("plans").findOneAndUpdate(
+        {_id: new mongodb.ObjectId(data.id)}, 
+        {$set:{reja: data.new_input}}, 
+        function(err,data){
+        res.json({state: "succes"})
+    }
+    );
+});
+// app.get("/author",(req,res) => { //Agar user shu manzilga kirsa server author.ejs faylni olib uning ichiga 12 qatordan olingan user malumotlarini joylashtirib brouserga yuboradi
+//     res.render("author", {user: user});//{user: user} author.ejs file ichida <%=user.name%> kabi kodlar yozib foydalanuvchi malumotlarini dinamik kirita olamiz
+// })
+
+app.post("/deleate-all",(req,res) => {
+    if(req.body.deleate_all){
+        db.collection("plans").deleteMany(() =>{
+            res.json({state: "Hamma rejalar o'chirildi"});
+        })
+    }
+})
+
 
 app.get("/", function(req,res){ //Bu kod sahifa ochilganda,sahifa yangilanganda,server qayta ishga tushib sahifa yangilanfganda ishga tushadi
     console.log("user entered /") //bu qator bizning server konsolida chiqadi.Yani qachonki biror foydalanuvchi localhostni ochganda

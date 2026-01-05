@@ -18,30 +18,17 @@ function itemTemplate(item){
 let createField = document.getElementById("create-field") //createfield bu form tgiga orqali foydalanuvchi tomonidan kiritilgan malumot.Yani input bolgan malumotning idsi orqali ayni osha malumotni ushlab oldik.
 document.getElementById("create-form").addEventListener("submit", function(e){//Malumot kiritilib enter bolganda ishga tushadigan kod.Htm formning idsi orqali uni qolga kiritdik
     e.preventDefault(); //Traditional usulda yani malumot kiritilib inter bosilganda create-item urliga otib ketishini oldi olindi.HTMLdagi actionda korsatilgan manzil ishga tushib ketishi oldi olindi.Agar buni yozmasak kiritilgan malumot browserda 2 marta paydo boladi sababi.Biri traditional usulda post boladi ikkinchisi axios orqali modern uslubda post bolib mongodbga joylashadi va app.get bolganda ikkalasi ham korinadi
-
-
     axios //axios external package bolib uni htmlga yani reja.ejs ichiga yukladik
     .post("/create-item", {reja: createField.value})//axios obyctining .post() metodi orqali foydalanuvchi yuborgan malumotni serverdagi qaysi urlga qaysi nom orqali yuborilishi kerakligini belgildik.reja bu form tegida formga berilgan name:reja ning qiymati.Createfield.value bu user tomonidan kiritilgan malumotning qiymati.Yani u kiritgan matn
     .then((response) =>{//.post() orqali serverga yuborilgan malumot muvafaqqiyatli bajarilgan bolsa server bizga kerakli malumotni yuboradi.Ayni shu malumot response va unga tegishli data obyecti hisoblanadi yani response.data.Qabul qilingan data birdaniga browserga qoshilyapti qanday qoshishni esa itemtemplate belgilab beradi
         document //document obyecti orqali reja ejs ichidagi kerakli elementni idsi orqali qolga kiritamiz
         .getElementById("item-list") //item-list bu frontentdagi form pasidan joylashuvchi ul yani jadval idsi
-        .insertAdjacentHTML("beforebegin", itemTemplate(response.data))//insertaAdjacentHTML bu yuqorida chaqirilgan ul jadvalining qayeridan va qaysi malumotni kiritish kerakligini belgiladi.response.data server bizga yuborgan malumot.Biz uni itemTemplate orqali browserning kerakli qismiga yuklayaopmoiz.
+        .insertAdjacentHTML("beforeend", itemTemplate(response.data))//insertaAdjacentHTML bu yuqorida chaqirilgan ul jadvalining qayeridan va qaysi malumotni kiritish kerakligini belgiladi.response.data server bizga yuborgan malumot.Biz uni itemTemplate orqali browserning kerakli qismiga yuklayaopmoiz.
         //insertAdjacentHTML malumotni vaqtincha yuklaydi.Qachonki refresh bolganda app.get ishga tushadi va itemtemplate browserga yozgan malumot refreshdan song ochib ketadi va app.getdan kelgan malumot browserda paydo boladi
         createField.value = ""; //Bu qator orqali user kiritgan malumot '' ga yani bosh qiymatga tenglanyapti sababi avval kiritilgan malumot input ichida qolmasligi kerak
         createField.focus();//probelni input katagiga togirladik
-})
 
-    axios
-    .post("/create-item", {reja: createField.value})
-    .then((response) =>{
-        document
-        .getElementById("item-list")
-        .insertAdjacentHTML("beforebegin", itemTemplate(response.data))
-        createField.value = "";
-        createField.focus();
-    })
-
-    .catch((err) => {
+    }).catch((err) => {
         console.log("Iltimos qayta urinib koring")
     });
 });

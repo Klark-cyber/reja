@@ -1,13 +1,22 @@
+//===============================Task E=======================================
+// Berilgan: TASK E:  Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.MASALAN: getReverse("hello") return qilsin "olleh"
+
+function getReverse(text){
+return text.split("").reverse().join("")
+}
+console.log(getReverse("olleh"))
+
+
 
 //=================================Task D======================================
 
 //Berilgan:TASK D : Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
-function checkContent(letter1,letter2){
-    const text1 = letter1.toLowerCase().split("").sort().join("")//2.massivga aylantirdik,3.sort orqali alifbo tartibida tartibladik,4.join() orqaliyana stringga aylantirdik
-    const text2 = letter2.toLowerCase().split("").sort().join("")
-    return text1==text2
-}
-console.log(checkContent("Jamshid","dishmaj"))
+// function checkContent(letter1,letter2){
+//     const text1 = letter1.toLowerCase().split("").sort().join("")//2.massivga aylantirdik,3.sort orqali alifbo tartibida tartibladik,4.join() orqaliyana stringga aylantirdik
+//     const text2 = letter2.toLowerCase().split("").sort().join("")
+//     return text1==text2
+// }
+// console.log(checkContent("Jamshid","dishmaj"))
 
 
 //================================Task C=========================================

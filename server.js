@@ -13,7 +13,7 @@ mongodb.connect(connectionString, { //Connect metodi malumotlar bazasiga ulanish
      module.exports = client; //client bu ulanish muvafaqqiyatli amalga oshganda paydo boladigan server hamda mongodb orasidagi eshik.Yani mongo Db bizga beradigan obyect.Barcha ishlar:database olish,collection olish,insert,delete,find shu client orqali amalga oshadi
      const app = require("./app"); //app ni app.js filedan import qildik
      const server = http.createServer(app); //expressni http serverga boglash.Agar DB ga ulanishda xatolik yuzaga kelsa server ishga tusmaydi
-let PORT = 3000; //server ishlaydigan port
+let PORT = 4010; //server ishlaydigan port
 server.listen(PORT, function(){ //Server uygonadi.listen metodi serverni korsatilgan portga ulab uni tinglash holatiga otkazadi.Endi keladigan sorovlar shu manzilga keladi
     console.log(`The server is running succesfully on port: ${PORT}, http://localhost:${PORT}`)
 });   

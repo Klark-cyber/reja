@@ -1,10 +1,33 @@
+//===============================Task F=========================================
+//Sharti: Yagona string argumentga ega findDoublers nomli function tuzing Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa true yokida false natija qaytarsin.
+
+function findDoublers(matn) {
+  let text = matn.split("");
+  let tekshirish = {};
+
+  for (let i = 0; i < text.length; i++) {
+    if (tekshirish[text[i]]) {
+      return true;  
+    }
+    tekshirish[text[i]] = "mavjud";
+  }
+
+  return false; 
+}
+console.log(findDoublers("helo"))
+
+//ikkinchi usul set metodi orqali hosil qilinadi bu metod stringni qabul qiladi va oxshash harflarni tashlab faqat unikal harflardan iborat string yaratadi
+//function findDoublers(matn) {
+//   return new Set(matn).size !== matn.length;
+// }
+
 //===============================Task E=======================================
 // Berilgan: TASK E:  Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.MASALAN: getReverse("hello") return qilsin "olleh"
 
-function getReverse(text){
-return text.split("").reverse().join("")
-}
-console.log(getReverse("olleh"))
+// function getReverse(text){
+// return text.split("").reverse().join("")
+// }
+// console.log(getReverse("olleh"))
 
 
 

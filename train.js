@@ -1,20 +1,36 @@
+
+//=================================Task E=======================================
+// Berilgan:Yagona parametrga ega function tuzing.Va bu function parametr orqalik integer ma'lumot turlariga ega bo'lgan bir arrayni qabul qilsin.Ushbu function bizga arrayning tarkibidagi birinchi eng katta qiymatning indeksini qaytarsin.
+
+function getHighestIndex(list){
+   // return list.indexOf(Math.max(...list))
+    let n=list[0];
+    for(let i=1;i<list.length;i++){
+         if(n<list[i]){
+            n=list[i]
+         }
+    }
+    return list.indexOf(n)
+}
+let list1 = [4000,8,666,99,2000,5000,1040]
+console.log(getHighestIndex(list1))
 //===============================Task F=========================================
 //Sharti: Yagona string argumentga ega findDoublers nomli function tuzing Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa true yokida false natija qaytarsin.
 
-function findDoublers(matn) {
-  let text = matn.split("");
-  let tekshirish = {};
+// function findDoublers(matn) {
+//   let text = matn.split("");
+//   let tekshirish = {};
 
-  for (let i = 0; i < text.length; i++) {
-    if (tekshirish[text[i]]) {
-      return true;  
-    }
-    tekshirish[text[i]] = "mavjud";
-  }
+//   for (let i = 0; i < text.length; i++) {
+//     if (tekshirish[text[i]]) {
+//       return true;  
+//     }
+//     tekshirish[text[i]] = "mavjud";
+//   }
 
-  return false; 
-}
-console.log(findDoublers("helo"))
+//   return false; 
+// }
+// console.log(findDoublers("helo"))
 
 //ikkinchi usul set metodi orqali hosil qilinadi bu metod stringni qabul qiladi va oxshash harflarni tashlab faqat unikal harflardan iborat string yaratadi
 //function findDoublers(matn) {

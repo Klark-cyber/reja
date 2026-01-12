@@ -1,5 +1,5 @@
 
-//=================================Task E=======================================
+//=================================Task G=======================================
 // Berilgan:Yagona parametrga ega function tuzing.Va bu function parametr orqalik integer ma'lumot turlariga ega bo'lgan bir arrayni qabul qilsin.Ushbu function bizga arrayning tarkibidagi birinchi eng katta qiymatning indeksini qaytarsin.
 
 function getHighestIndex(list){
